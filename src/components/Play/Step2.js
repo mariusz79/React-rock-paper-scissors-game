@@ -1,56 +1,87 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
+import React from "react";
+import styled, { css } from "styled-components";
 
-const Step2 = ({ paperChoice, scissorsChoice, rockChoice }) => {
-  const Step1 = styled.div`
+const Step2 = (props) => {
+  const Step2 = styled.div`
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5vw;
+    color: white;
   `;
-  const BlueButton = styled.div`
-    position: absolute;
-    top: -1rem;
-    background: linear-gradient(white, #ccc) padding-box,
-      /*this is background*/
-        linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
-        border-box;
-    color: #313149;
-    padding: 30px;
+  const Player = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
+
+  const Cpu = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
+
+  const Button = styled.div`
+    padding: 60px;
     border: 10px solid transparent;
     border-radius: 50%;
+    width: 7vw;
+    height: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    ${(props) =>
+      props.blue &&
+      css`
+        background: linear-gradient(white, #ccc) padding-box,
+          /*this is background*/
+            linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
+            border-box;
+      `}
+
+    ${(props) =>
+      props.red &&
+      css`
+        background: linear-gradient(white, #ccc) padding-box,
+          /*this is background*/
+            linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
+            border-box;
+      `}
+      ${(props) =>
+        props.yellow &&
+        css`
+          background: linear-gradient(white, #ccc) padding-box,
+            /*this is background*/
+              linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
+              border-box;
+        `}
+        ${(props) =>
+          props.empty &&
+          css`
+            background: darkgray;
+          `}
   `;
+
   const Icon = styled.img`
-    width: 30px;
-  `;
-  const YellowButton = styled.div`
-    position: absolute;
-    top: -1rem;
-    right: 0;
-    background: linear-gradient(white, #ccc) padding-box,
-      /*this is background*/
-        linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
-        border-box;
-    color: #313149;
-    padding: 30px;
-    border: 10px solid transparent;
-    border-radius: 50%;
-  `;
-  const RedButton = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 35%;
-    background: linear-gradient(white, #ccc) padding-box,
-      /*this is background*/
-        linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
-        border-box;
-    color: #313149;
-    padding: 30px;
-    border: 10px solid transparent;
-    border-radius: 50%;
+    width: 50px;
+    height: 50px;
   `;
 
   return (
     <>
       <Step2>
-        
+        <Player>
+          <h2>YOU PICKED</h2>
+          <Button blue>
+            <Icon src="./img/icon-paper.svg" alt="paper" />
+          </Button>
+        </Player>
+        <Cpu>
+          <h2>THE HOUSE PICKED</h2>
+          <Button empty>
+          </Button>
+        </Cpu>
       </Step2>
     </>
   );

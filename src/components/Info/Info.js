@@ -5,8 +5,8 @@ import styled from "@emotion/styled";
 
 const Info = ({score}) => {
     const Info = styled.div`
-     width: 400px;
-     height: 130px;
+     width: 50vw;
+     height: 100px;
      border: 2px solid white;
      border-radius: 15px;
      display: flex;

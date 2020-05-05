@@ -1,65 +1,70 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
+import React from "react";
+import styled, { css } from "styled-components";
 
 const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
   const Step1 = styled.div`
     position: relative;
   `;
-  const BlueButton = styled.div`
-    position: absolute;
-    top: -1rem;
-    background: linear-gradient(white, #ccc) padding-box,
-      /*this is background*/
-        linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
-        border-box;
-    color: #313149;
+  const Button = styled.div`
     padding: 30px;
     border: 10px solid transparent;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ${(props) =>
+      props.blue &&
+      css`
+        position: absolute;
+        top: -1rem;
+        background: linear-gradient(white, #ccc) padding-box,
+          /*this is background*/
+            linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
+            border-box;
+      `}
+
+    ${(props) =>
+      props.red &&
+      css`
+        position: absolute;
+        bottom: 0;
+        left: 35%;
+        background: linear-gradient(white, #ccc) padding-box,
+          /*this is background*/
+            linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
+            border-box;
+      `}
+      ${(props) =>
+        props.yellow &&
+        css`
+          position: absolute;
+          top: -1rem;
+          right: 0;
+          background: linear-gradient(white, #ccc) padding-box,
+            /*this is background*/
+              linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
+              border-box;
+        `}
   `;
   const Icon = styled.img`
     width: 30px;
-  `;
-  const YellowButton = styled.div`
-    position: absolute;
-    top: -1rem;
-    right: 0;
-    background: linear-gradient(white, #ccc) padding-box,
-      /*this is background*/
-        linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
-        border-box;
-    color: #313149;
-    padding: 30px;
-    border: 10px solid transparent;
-    border-radius: 50%;
-  `;
-  const RedButton = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 35%;
-    background: linear-gradient(white, #ccc) padding-box,
-      /*this is background*/
-        linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
-        border-box;
-    color: #313149;
-    padding: 30px;
-    border: 10px solid transparent;
-    border-radius: 50%;
+    height: 30px;
   `;
 
   return (
     <>
       <Step1>
         <img src="./img/bg-triangle.svg" alt="triangle" />
-        <BlueButton onClick={paperChoice}>
+        <Button blue onClick={paperChoice}>
           <Icon src="./img/icon-paper.svg" alt="paper" />
-        </BlueButton>
-        <YellowButton onClick={scissorsChoice}>
+        </Button>
+        <Button yellow onClick={scissorsChoice}>
           <Icon src="./img/icon-scissors.svg" alt="scissors" />
-        </YellowButton>
-        <RedButton onClick={rockChoice}>
+        </Button>
+        <Button red onClick={rockChoice}>
           <Icon src="./img/icon-rock.svg" alt="rock" />
-        </RedButton>
+        </Button>
       </Step1>
     </>
   );
