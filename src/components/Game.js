@@ -1,12 +1,13 @@
 import React from "react";
 import Info from "./Info/Info";
-import Play from "../components/Play/Play";
+import Step1 from "../components/Play/Step1";
 
 const Game = () => {
   return (
     <>
       <Info score={10} />
-      <Play />
+          <Step1 />
+          <button>Modal</button>
     </>
   );
 };
