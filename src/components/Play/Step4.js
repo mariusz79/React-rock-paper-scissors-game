@@ -1,0 +1,97 @@
+import React from "react";
+import styled, { css } from "styled-components";
+
+const Step4 = ({ choice, playAgain }) => {
+  const Step4 = {
+    position: "relative",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gridGap: "5vw",
+    color: "white",
+  };
+  const Column = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
+
+  const Button = styled.div`
+    padding: 60px;
+    border: 10px solid transparent;
+    border-radius: 50%;
+    width: 7vw;
+    height: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+        ${(props) =>
+          props.empty &&
+          css`
+            background: darkgray;
+          `}
+          ${(props) =>
+            props.winner &&
+            css`
+              box-shadow: 0 0 0 20px #8080801c, 0 0 0 40px #8080801c;
+            `}
+  `;
+var background = "";
+switch (choice) {
+  case "paper":
+    background = `linear-gradient(white, #ccc) padding-box,
+          /*this is background*/
+            linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
+            border-box`;
+    break;
+  case "rock":
+    background = `linear-gradient(white, #ccc) padding-box,
+            linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
+            border-box`;
+    break;
+  case "scissors":
+    background = `linear-gradient(white, #ccc) padding-box,
+              linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
+              border-box`;
+    break;
+}
+  const Icon = {
+    width: "50px",
+    height: "50px",
+  };
+ 
+     var icon = "";
+     switch (choice) {
+       case "paper":
+         icon = `./img/icon-paper.svg`;
+         break;
+       case "rock":
+         icon = `./img/icon-rock.svg`;
+         break;
+       case "scissors":
+         icon = `./img/icon-scissors.svg`;
+         break;
+     }
+    
+
+  return (
+    <div style={Step4}>
+      <div style={Column}>
+        <h1>Winner</h1>
+        <button onClick={playAgain}>PLAY AGAIN</button>
+        <h2>YOU PICKED</h2>
+        <Button style={{ background: background }} winner>
+          <img style={Icon} src={icon} alt={icon} />
+        </Button>
+      </div>
+      <div style={Column}>
+        <h2>THE HOUSE PICKED</h2>
+        <Button style={{ background: background }}>
+          <img style={Icon} src="./img/icon-paper.svg" alt="paper" />
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Step4;

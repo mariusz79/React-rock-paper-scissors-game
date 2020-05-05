@@ -2,9 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
-  const Step1 = styled.div`
-    position: relative;
-  `;
+  
   const Button = styled.div`
     padding: 30px;
     border: 10px solid transparent;
@@ -47,26 +45,26 @@ const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
               border-box;
         `}
   `;
-  const Icon = styled.img`
-    width: 30px;
-    height: 30px;
-  `;
-
+    const Icon = {
+        width: '30px',
+        height: '30px',
+    };
+const Step1 = {
+  position: 'relative',
+};
   return (
-    <>
-      <Step1>
-        <img src="./img/bg-triangle.svg" alt="triangle" />
-        <Button blue onClick={paperChoice}>
-          <Icon src="./img/icon-paper.svg" alt="paper" />
-        </Button>
-        <Button yellow onClick={scissorsChoice}>
-          <Icon src="./img/icon-scissors.svg" alt="scissors" />
-        </Button>
-        <Button red onClick={rockChoice}>
-          <Icon src="./img/icon-rock.svg" alt="rock" />
-        </Button>
-      </Step1>
-    </>
+    <div style={Step1}>
+      <img src="./img/bg-triangle.svg" alt="triangle" />
+      <Button blue onClick={paperChoice}>
+        <img style={Icon} src="./img/icon-paper.svg" alt="paper" />
+      </Button>
+      <Button yellow onClick={scissorsChoice}>
+        <img style={Icon} src="./img/icon-scissors.svg" alt="scissors" />
+      </Button>
+      <Button red onClick={rockChoice}>
+        <img style={Icon} src="./img/icon-rock.svg" alt="rock" />
+      </Button>
+    </div>
   );
 };
 

@@ -1,25 +1,19 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Step2 = (props) => {
-  const Step2 = styled.div`
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 5vw;
-    color: white;
-  `;
-  const Player = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `;
-
-  const Cpu = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `;
+const Step2 = ({ choice }) => {
+  const Step2 = {
+    position: "relative",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gridGap: "5vw",
+    color: "white",
+  };
+  const Column = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
 
   const Button = styled.div`
     padding: 60px;
@@ -31,31 +25,6 @@ const Step2 = (props) => {
     justify-content: center;
     align-items: center;
     
-    ${(props) =>
-      props.blue &&
-      css`
-        background: linear-gradient(white, #ccc) padding-box,
-          /*this is background*/
-            linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
-            border-box;
-      `}
-
-    ${(props) =>
-      props.red &&
-      css`
-        background: linear-gradient(white, #ccc) padding-box,
-          /*this is background*/
-            linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
-            border-box;
-      `}
-      ${(props) =>
-        props.yellow &&
-        css`
-          background: linear-gradient(white, #ccc) padding-box,
-            /*this is background*/
-              linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
-              border-box;
-        `}
         ${(props) =>
           props.empty &&
           css`
@@ -63,27 +32,56 @@ const Step2 = (props) => {
           `}
   `;
 
-  const Icon = styled.img`
-    width: 50px;
-    height: 50px;
-  `;
+  var background = "";
+switch (choice) {
+  case "paper":
+    background = `linear-gradient(white, #ccc) padding-box,
+          /*this is background*/
+            linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
+            border-box`;
+    break;
+  case "rock":
+    background = `linear-gradient(white, #ccc) padding-box,
+            linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
+            border-box`;
+    break;
+  case "scissors":
+    background = `linear-gradient(white, #ccc) padding-box,
+              linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
+              border-box`;
+    break;
+}
+  const Icon = {
+    width: "50px",
+    height: "50px",
+  };
+
+  var icon = "";
+  switch (choice) {
+    case "paper":
+      icon = `./img/icon-paper.svg`;
+      break;
+    case "rock":
+      icon = `./img/icon-rock.svg`;
+      break;
+    case "scissors":
+      icon = `./img/icon-scissors.svg`;
+      break;
+  }
 
   return (
-    <>
-      <Step2>
-        <Player>
-          <h2>YOU PICKED</h2>
-          <Button blue>
-            <Icon src="./img/icon-paper.svg" alt="paper" />
-          </Button>
-        </Player>
-        <Cpu>
-          <h2>THE HOUSE PICKED</h2>
-          <Button empty>
-          </Button>
-        </Cpu>
-      </Step2>
-    </>
+    <div style={Step2}>
+      <div style={Column}>
+        <h2>YOU PICKED</h2>
+              <Button style={{ background: background }}>
+          <img style={Icon} src={icon} alt={icon} />
+        </Button>
+      </div>
+      <div style={Column}>
+        <h2>THE HOUSE PICKED</h2>
+        <Button empty></Button>
+      </div>
+    </div>
   );
 };
 
