@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 
-const Step1 = (props) => {
+const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
   const Step1 = styled.div`
     position: relative;
   `;
@@ -48,18 +48,20 @@ const Step1 = (props) => {
   `;
 
   return (
-    <Step1>
-      <img src="./img/bg-triangle.svg" alt="triangle" />
-      <BlueButton>
-        <Icon src="./img/icon-paper.svg" alt="paper" />
-      </BlueButton>
-      <YellowButton>
-        <Icon src="./img/icon-scissors.svg" alt="scissors" />
-      </YellowButton>
-      <RedButton>
-        <Icon src="./img/icon-rock.svg" alt="rock" />
-      </RedButton>
-    </Step1>
+    <>
+      <Step1>
+        <img src="./img/bg-triangle.svg" alt="triangle" />
+        <BlueButton onClick={paperChoice}>
+          <Icon src="./img/icon-paper.svg" alt="paper" />
+        </BlueButton>
+        <YellowButton onClick={scissorsChoice}>
+          <Icon src="./img/icon-scissors.svg" alt="scissors" />
+        </YellowButton>
+        <RedButton onClick={rockChoice}>
+          <Icon src="./img/icon-rock.svg" alt="rock" />
+        </RedButton>
+      </Step1>
+    </>
   );
 };
 
