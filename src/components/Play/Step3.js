@@ -23,14 +23,7 @@ const Step3 = ({ choice, cpuChoice }) => {
     height: 7vw;
     display: flex;
     justify-content: center;
-    align-items: center;
-  
-        ${(props) =>
-          props.empty &&
-          css`
-            background: darkgray;
-          `}
-           
+    align-items: center;         
   `;
 
   const Icon = {
@@ -43,7 +36,7 @@ const Step3 = ({ choice, cpuChoice }) => {
  switch (choice) {
    case "paper":
      background = `linear-gradient(white, #ccc) padding-box,
-          /*this is background*/
+          
             linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
             border-box`;
      boxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #2b45c0`;
@@ -68,7 +61,7 @@ const Step3 = ({ choice, cpuChoice }) => {
     switch (cpuChoice) {
       case "paper":
         cpuBackground = `linear-gradient(white, #ccc) padding-box,
-          /*this is background*/
+         
             linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
             border-box`;
             cpuBoxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #2b45c0`;
@@ -94,43 +87,33 @@ const Step3 = ({ choice, cpuChoice }) => {
       boxShadow: `${cpuBoxShadow}`,
       background: `${cpuBackground}`,
     };
-     var icon = "";
-     switch (choice) {
-       case "paper":
-         icon = `./img/icon-paper.svg`;
-         break;
-       case "rock":
-         icon = `./img/icon-rock.svg`;
-         break;
-       case "scissors":
-         icon = `./img/icon-scissors.svg`;
-         break;
-     }
-    
-    var cpuIcon = "";
-    switch (cpuChoice) {
-      case "paper":
-        cpuIcon = `./img/icon-paper.svg`;
-        break;
-      case "rock":
-        cpuIcon = `./img/icon-rock.svg`;
-        break;
-      case "scissors":
-        cpuIcon = `./img/icon-scissors.svg`;
-        break;
-    }
+ 
+      const checkIcon = (p) => {
+switch (p) {
+  case "paper":
+    return`./img/icon-paper.svg`;
+    break;
+  case "rock":
+    return `./img/icon-rock.svg`;
+    break;
+  case "scissors":
+    return `./img/icon-scissors.svg`;
+    break;
+}
+    };
+
   return (
     <div style={Step3}>
       <div style={Column}>
-              <h2>YOU PICKED</h2>
+        <h2>YOU PICKED</h2>
         <Button style={style}>
-          <img style={Icon} src={icon} alt={icon} />
+          <img style={Icon} src={checkIcon(choice)} />
         </Button>
       </div>
       <div style={Column}>
-              <h2>THE HOUSE PICKED</h2>
+        <h2>THE HOUSE PICKED</h2>
         <Button style={cpuStyle}>
-          <img style={Icon} src={cpuIcon} alt={cpuIcon} />
+          <img style={Icon} src={checkIcon(cpuChoice)} />
         </Button>
       </div>
     </div>

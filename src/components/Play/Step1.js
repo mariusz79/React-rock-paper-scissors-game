@@ -9,13 +9,11 @@ const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translate(0%);
-    transition: 0.3s ease-out;
     @media (min-width: 768px) {
       padding: 100px;}
     &:hover {
       transform: translate(0%, 1%);
-      transition: 0.3s ease-in-out;
+      transition: 0.2s ease-in-out;
         }
  
     ${(props) =>
