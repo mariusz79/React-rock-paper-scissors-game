@@ -2,7 +2,6 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
-  
   const Button = styled.div`
     padding: 30px;
     border: 10px solid transparent;
@@ -10,7 +9,15 @@ const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    transform: translate(0%);
+    transition: 0.3s ease-out;
+    @media (min-width: 768px) {
+      padding: 100px;}
+    &:hover {
+      transform: translate(0%, 1%);
+      transition: 0.3s ease-in-out;
+        }
+ 
     ${(props) =>
       props.blue &&
       css`
@@ -20,6 +27,10 @@ const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
           /*this is background*/
             linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
             border-box;
+        box-shadow: inset 0px 7px 2px #cecccc, 0 5px 0 1px #2b45c0;
+        &:hover {
+          box-shadow: none;
+        }
       `}
 
     ${(props) =>
@@ -32,6 +43,10 @@ const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
           /*this is background*/
             linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
             border-box;
+        box-shadow: inset 0px 7px 2px #cecccc, 0 5px 0 1px #9f1634;
+        &:hover {
+          box-shadow: none;
+        }
       `}
       ${(props) =>
         props.yellow &&
@@ -43,15 +58,20 @@ const Step1 = ({ paperChoice, scissorsChoice, rockChoice }) => {
             /*this is background*/
               linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
               border-box;
+          box-shadow: inset 0px 7px 2px #cecccc, 0 5px 0 1px #c66d1d;
+          &:hover {
+            box-shadow: none;
+          }
         `}
+        
   `;
-    const Icon = {
-        width: '30px',
-        height: '30px',
-    };
-const Step1 = {
-  position: 'relative',
-};
+  const Icon = {
+    width: "30px",
+    height: "30px",
+  };
+  const Step1 = {
+    position: "relative",
+  };
   return (
     <div style={Step1}>
       <img src="./img/bg-triangle.svg" alt="triangle" />

@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Step3 = ({ choice }) => {
+const Step3 = ({ choice, cpuChoice }) => {
   const Step3 = {
     position: "relative",
     display: "grid",
@@ -30,11 +30,7 @@ const Step3 = ({ choice }) => {
           css`
             background: darkgray;
           `}
-          ${(props) =>
-            props.winner &&
-            css`
-              box-shadow: 0 0 0 20px #8080801c, 0 0 0 40px #8080801c;
-            `}
+           
   `;
 
   const Icon = {
@@ -43,24 +39,61 @@ const Step3 = ({ choice }) => {
   };
 
  var background = "";
+ var boxShadow = "";
  switch (choice) {
    case "paper":
      background = `linear-gradient(white, #ccc) padding-box,
           /*this is background*/
             linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
             border-box`;
+     boxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #2b45c0`;
      break;
    case "rock":
      background = `linear-gradient(white, #ccc) padding-box,
             linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
             border-box`;
+     boxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #9f1634`;
      break;
    case "scissors":
      background = `linear-gradient(white, #ccc) padding-box,
               linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
               border-box`;
+     boxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #c66d1d`;
      break;
  }
+ 
+    
+    var cpuBackground = "";
+    var cpuBoxShadow = "";
+    switch (cpuChoice) {
+      case "paper":
+        cpuBackground = `linear-gradient(white, #ccc) padding-box,
+          /*this is background*/
+            linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%))
+            border-box`;
+            cpuBoxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #2b45c0`;
+        break;
+      case "rock":
+        cpuBackground = `linear-gradient(white, #ccc) padding-box,
+            linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))
+            border-box`;
+           cpuBoxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #9f1634`;
+        break;
+      case "scissors":
+        cpuBackground = `linear-gradient(white, #ccc) padding-box,
+              linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%))
+              border-box`;
+            cpuBoxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #c66d1d`;
+        break;
+    }
+    const style = {
+      boxShadow: `${boxShadow}`,
+      background: `${background}`,
+    };
+    const cpuStyle = {
+      boxShadow: `${cpuBoxShadow}`,
+      background: `${cpuBackground}`,
+    };
      var icon = "";
      switch (choice) {
        case "paper":
@@ -74,18 +107,30 @@ const Step3 = ({ choice }) => {
          break;
      }
     
+    var cpuIcon = "";
+    switch (cpuChoice) {
+      case "paper":
+        cpuIcon = `./img/icon-paper.svg`;
+        break;
+      case "rock":
+        cpuIcon = `./img/icon-rock.svg`;
+        break;
+      case "scissors":
+        cpuIcon = `./img/icon-scissors.svg`;
+        break;
+    }
   return (
     <div style={Step3}>
       <div style={Column}>
-        <h2>YOU PICKED</h2>
-        <Button style={{ background: background }} winner>
+              <h2>YOU PICKED</h2>
+        <Button style={style}>
           <img style={Icon} src={icon} alt={icon} />
         </Button>
       </div>
       <div style={Column}>
-        <h2>THE HOUSE PICKED</h2>
-        <Button style={{ background: background }}>
-          <img style={Icon} src="./img/icon-paper.svg" alt="paper" />
+              <h2>THE HOUSE PICKED</h2>
+        <Button style={cpuStyle}>
+          <img style={Icon} src={cpuIcon} alt={cpuIcon} />
         </Button>
       </div>
     </div>
