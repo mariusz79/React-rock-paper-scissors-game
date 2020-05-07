@@ -1,7 +1,6 @@
 import React from "react";
 import Logo from "./Logo";
 import Score from "./Score";
-import styled from "@emotion/styled";
 
 const Info = ({score}) => {
     const Info = styled.div`
