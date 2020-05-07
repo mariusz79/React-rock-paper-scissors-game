@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 import Score from "./Score";
+import styled from "styled-components";
 
 const Info = ({score}) => {
     const Info = styled.div`
