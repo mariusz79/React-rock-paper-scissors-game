@@ -16,11 +16,11 @@ const Step2 = ({ choice }) => {
   };
 
   const Button = styled.div`
-    padding: 60px;
-    border: 10px solid transparent;
+    padding: 45px;
+    border: 18px solid transparent;
     border-radius: 50%;
-    width: 7vw;
-    height: 7vw;
+    width: 6.5vw;
+    height: 6.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,7 @@ const Step2 = ({ choice }) => {
     ${(props) =>
       props.empty &&
       css`
-        background: darkgray;
+        background: #111b3b;
       `}
   `;
 
@@ -84,14 +84,14 @@ const Step2 = ({ choice }) => {
   return (
     <div style={Step2}>
       <div style={Column}>
-        <h2>YOU PICKED</h2>
         <Button style={style}>
           <img style={Icon} src={icon} alt={choice} />
         </Button>
+        <h3>YOU PICKED</h3>
       </div>
       <div style={Column}>
-        <h2>THE HOUSE PICKED</h2>
         <Button empty></Button>
+        <h3>THE HOUSE PICKED</h3>
       </div>
     </div>
   );

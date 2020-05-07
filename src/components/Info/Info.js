@@ -5,15 +5,21 @@ import styled from "@emotion/styled";
 
 const Info = ({score}) => {
     const Info = styled.div`
-      width: 50vw;
-      height: 100px;
+      height: 90px;
+      width: 90%;
       border: 2px solid hsl(217, 16%, 45%);
       border-radius: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 5px;
-      margin: 3rem 0;
+      margin: 2rem 0 5rem 0;
+      @media (min-width: 600px) {
+        width: 65vw;
+      }
+      @media (min-width: 768px) {
+        width: 55vw;
+      }
     `;
 
   return (

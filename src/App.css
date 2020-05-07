@@ -1,5 +1,7 @@
 .App{
-  display: inline-block;
+  display: flex;
   height: 100vh;
   max-width: 1366px;
+  flex-direction: column;
+  align-items: center;
 }
