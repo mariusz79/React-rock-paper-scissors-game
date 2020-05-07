@@ -17,7 +17,7 @@ const Step4 = ({ choice, playAgain, cpuChoice, txt }) => {
     const Div = styled.div`
       border-radius: 50%;
       ${(props) =>
-        props.empty &&
+        props.winner &&
         css`
           box-shadow: 0 0 0 20px #8080800f,0 0 0 40px #5459791a, 0 0 0 60px #2c486f4d;
 
@@ -57,6 +57,8 @@ const Step4 = ({ choice, playAgain, cpuChoice, txt }) => {
               border-box`;
       boxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #c66d1d`;
       break;
+    default:
+      boxShadow = "";
   }
 
   var cpuBackground = "";
@@ -81,6 +83,8 @@ const Step4 = ({ choice, playAgain, cpuChoice, txt }) => {
               border-box`;
       cpuBoxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #c66d1d`;
       break;
+    default:
+      cpuBoxShadow = "";
   }
   const style = {
     background: `${background}`,
@@ -99,73 +103,77 @@ const Step4 = ({ choice, playAgain, cpuChoice, txt }) => {
     switch (p) {
       case "paper":
         return `./img/icon-paper.svg`;
-        break;
       case "rock":
         return `./img/icon-rock.svg`;
-        break;
       case "scissors":
         return `./img/icon-scissors.svg`;
-        break;
+      default:
+        return "";
     }
   };
 
   return (
     <div style={Step4}>
       <h1>{txt}</h1>
-          <button onClick={playAgain}>PLAY AGAIN</button>
-          {txt === 'YOU WIN' ? (<>
-              <div style={Column}>
-        <h2>YOU PICKED</h2>
-        <Div empty>
-          <Button style={style}>
-            <img style={Icon} src={checkIcon(choice)} />
-          </Button>
-        </Div>
-      </div>
-      <div style={Column}>
-        <h2>THE HOUSE PICKED</h2>
-        <Div>
-          <Button style={cpuStyle}>
-            <img style={Icon} src={checkIcon(cpuChoice)} />
-          </Button>
-        </Div>
-      </div>
-          </>) : txt === 'YOU LOSE' ? (<>
-                  <div style={Column}>
-        <h2>YOU PICKED</h2>
-        <Div >
-          <Button style={style}>
-            <img style={Icon} src={checkIcon(choice)} />
-          </Button>
-        </Div>
-      </div>
-      <div style={Column}>
-        <h2>THE HOUSE PICKED</h2>
-        <Div empty>
-          <Button style={cpuStyle}>
-            <img style={Icon} src={checkIcon(cpuChoice)} />
-          </Button>
-        </Div>
-      </div>
-          </>): (<>
-                  <div style={Column}>
-        <h2>YOU PICKED</h2>
-        <Div >
-          <Button style={style}>
-            <img style={Icon} src={checkIcon(choice)} />
-          </Button>
-        </Div>
-      </div>
-      <div style={Column}>
-        <h2>THE HOUSE PICKED</h2>
-        <Div >
-          <Button style={cpuStyle}>
-            <img style={Icon} src={checkIcon(cpuChoice)} />
-          </Button>
-        </Div>
-      </div>     
-          </>)}
-      
+      <button onClick={playAgain}>PLAY AGAIN</button>
+      {txt === "YOU WIN" ? (
+        <>
+          <div style={Column}>
+            <h2>YOU PICKED</h2>
+            <Div winner>
+              <Button style={style}>
+                <img style={Icon} src={checkIcon(choice)} alt={choice} />
+              </Button>
+            </Div>
+          </div>
+          <div style={Column}>
+            <h2>THE HOUSE PICKED</h2>
+            <Div>
+              <Button style={cpuStyle}>
+                <img style={Icon} src={checkIcon(cpuChoice)} alt={cpuChoice} />
+              </Button>
+            </Div>
+          </div>
+        </>
+      ) : txt === "YOU LOSE" ? (
+        <>
+          <div style={Column}>
+            <h2>YOU PICKED</h2>
+            <Div>
+              <Button style={style}>
+                <img style={Icon} src={checkIcon(choice)} alt={choice} />
+              </Button>
+            </Div>
+          </div>
+          <div style={Column}>
+            <h2>THE HOUSE PICKED</h2>
+            <Div winner>
+              <Button style={cpuStyle}>
+                <img style={Icon} src={checkIcon(cpuChoice)} alt={cpuChoice} />
+              </Button>
+            </Div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div style={Column}>
+            <h2>YOU PICKED</h2>
+            <Div>
+              <Button style={style}>
+                <img style={Icon} src={checkIcon(choice)} alt={choice} />
+              </Button>
+            </Div>
+          </div>
+          <div style={Column}>
+            <h2>THE HOUSE PICKED</h2>
+            <Div>
+              <Button style={cpuStyle}>
+                <img style={Icon} src={checkIcon(cpuChoice)} alt={cpuChoice} />
+              </Button>
+            </Div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

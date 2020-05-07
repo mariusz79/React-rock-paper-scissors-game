@@ -54,6 +54,8 @@ const Step2 = ({ choice }) => {
               border-box`;
       boxShadow = `inset 0px 7px 2px #cecccc, 0 5px 0 1px #c66d1d`;
       break;
+    default:
+      boxShadow = "";
   }
   const style = {
     boxShadow: `${boxShadow}`,
@@ -75,6 +77,8 @@ const Step2 = ({ choice }) => {
     case "scissors":
       icon = `./img/icon-scissors.svg`;
       break;
+    default:
+      icon = "";
   }
 
   return (
@@ -82,7 +86,7 @@ const Step2 = ({ choice }) => {
       <div style={Column}>
         <h2>YOU PICKED</h2>
         <Button style={style}>
-          <img style={Icon} src={icon} alt={icon} />
+          <img style={Icon} src={icon} alt={choice} />
         </Button>
       </div>
       <div style={Column}>

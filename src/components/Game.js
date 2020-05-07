@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Info from "./Info/Info";
 import Step1 from "../components/Play/Step1";
 import Step2 from "../components/Play/Step2";
 import Step3 from "../components/Play/Step3";
 import Step4 from "../components/Play/Step4";
+import Modal from '../components/modal/Modal';
+import ModalButton from '../components/modal/ModalButton';
 
 const Game = () => {
   const [step, setStep] = useState("1");
@@ -11,6 +13,7 @@ const Game = () => {
   const [cpuChoice, setCpuChoice] = useState("");
   const [txt, setTxt] = useState("");
   const [score, setScore] = useState(0);
+  const [modal, setModal] = useState(false);
 
   const computerChoice = () => {
     var choiceCpu = Math.floor(Math.random() * 3);
@@ -24,6 +27,8 @@ const Game = () => {
       case 2:
         setCpuChoice("scissors");
         break;
+      default:
+        return '';
     }
   };
   const check = () => {
@@ -71,6 +76,14 @@ const Game = () => {
     setCpuChoice("");
   };
 
+  const openModal = () => {
+    setModal(true);
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
+
   return (
     <>
       <Info score={score} />
@@ -98,7 +111,11 @@ const Game = () => {
           txt={txt}
         />
       ) : null}
-      <button>Modal</button>
+      <ModalButton openModal={openModal} />
+      {modal ? (
+        <Modal closeModal={closeModal}/>
+      ): null}
+      
     </>
   );
 };
